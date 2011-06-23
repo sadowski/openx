@@ -45,6 +45,10 @@ module OpenX
         super(params)
       end
 
+      def statistics(start_on = Date.today, end_on = Date.today)
+        remote.call('ox.zoneDailyStatistics', self.id, start_on, end_on)
+      end
+
       # Link this zone to +campaign+
       def link_campaign(campaign)
         raise "Zone must be saved" if new_record?
