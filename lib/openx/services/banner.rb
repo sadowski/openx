@@ -76,8 +76,8 @@ module OpenX
         super(params)
       end
 
-      def statistics start_on = Date.today, end_on = Date.today
-        remote.call('ox.bannerDailyStatistics', self.id, start_on, end_on)
+      def statistics start_on = Date.today, end_on = Date.today, local_time_zone = true
+        remote.call('ox.bannerDailyStatistics', self.id, start_on, end_on, local_time_zone)
       end
 
       def targeting
