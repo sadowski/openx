@@ -47,6 +47,14 @@ module OpenX
       def banners
         Banner.find(:all, self.id)
       end
+
+      def publisher_statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
+	    remote.call('ox.campaignPublisherStatistics', self.id, start_on, end_on, local_time_zone)
+      end
+
+      def zone_statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
+        remote.call('ox.campaignZoneStatistics', self.id, start_on, end_on, local_time_zone)
+      end
     end
   end
 end

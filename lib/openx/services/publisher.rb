@@ -28,6 +28,14 @@ module OpenX
         Zone.find(:all, self.id)
       end
 
+      def campaign_statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
+	    remote.call('ox.publisherCampaignStatistics', self.id, start_on, end_on, local_time_zone)
+      end
+
+      def statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
+        remote.call('ox.publisherDailyStatistics', self.id, start_on, end_on, local_time_zone)
+      end
+
       def channels
         Channel.find(:all, self.id)
       end

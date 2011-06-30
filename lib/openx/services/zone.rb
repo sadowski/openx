@@ -45,6 +45,10 @@ module OpenX
         super(params)
       end
 
+      def campaign_statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
+        remote.call('ox.zoneCampaignStatistics', self.id, start_on, end_on, local_time_zone)
+      end
+
       def statistics(start_on = Date.today, end_on = Date.today, local_time_zone = true)
         remote.call('ox.zoneDailyStatistics', self.id, start_on, end_on, local_time_zone)
       end
